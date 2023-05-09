@@ -1,0 +1,167 @@
+{
+    "port": 0,
+    "inbound": null,
+    "outbound": null,
+    "inboundDetour": null,
+    "outboundDetour": null,
+    "log": {
+        "access": "",
+        "error": "",
+        "loglevel": "warning",
+        "dnsLog": false
+    },
+    "routing": {
+        "settings": null,
+        "rules": [
+            {
+                "type": "field",
+                "inboundTag": ["api"],
+                "outboundTag": "api",
+                "enabled": true
+            },
+            {
+                "id": "5194021408539782709",
+                "type": "field",
+                "port": "0-65535",
+                "outboundTag": "proxy",
+                "enabled": true
+            }
+        ],
+        "domainStrategy": "AsIs",
+        "balancers": null,
+        "domainMatcher": ""
+    },
+    "dns": null,
+    "inbounds": [
+        {
+            "protocol": "socks",
+            "port": { "Range": [{ "From": 10808, "To": 10808 }] },
+            "listen": { "Address": [127, 0, 0, 1] },
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "allowTransparent": false
+            },
+            "tag": "socks",
+            "allocate": null,
+            "streamSettings": null,
+            "domainOverride": null,
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"],
+                "domainsExcluded": null,
+                "metadataOnly": false,
+                "routeOnly": false
+            }
+        },
+        {
+            "protocol": "http",
+            "port": { "Range": [{ "From": 10809, "To": 10809 }] },
+            "listen": { "Address": [127, 0, 0, 1] },
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "allowTransparent": false
+            },
+            "tag": "http",
+            "allocate": null,
+            "streamSettings": null,
+            "domainOverride": null,
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"],
+                "domainsExcluded": null,
+                "metadataOnly": false,
+                "routeOnly": false
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "sendThrough": null,
+            "tag": "proxy",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "vip.ninjavps.tk",
+                        "port": 35278,
+                        "users": [
+                            {
+                                "id": "8713d50a-3df6-4040-82eb-772841e72bcc",
+                                "alterId": 0,
+                                "email": "t@t.tt",
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "",
+                "tlsSettings": null,
+                "realitySettings": null,
+                "tcpSettings": {
+                    "header": {
+                        "type": "http",
+                        "request": {
+                            "version": "1.1",
+                            "method": "GET",
+                            "path": ["/"],
+                            "headers": {
+                                "Host": [""],
+                                "User-Agent": [""],
+                                "Accept-Encoding": ["gzip, deflate"],
+                                "Connection": ["keep-alive"],
+                                "Pragma": "no-cache"
+                            }
+                        }
+                    },
+                    "acceptProxyProtocol": false
+                },
+                "kcpSettings": null,
+                "wsSettings": null,
+                "httpSettings": null,
+                "dsSettings": null,
+                "quicSettings": null,
+                "sockopt": null,
+                "grpcSettings": null,
+                "gunSettings": null
+            },
+            "proxySettings": null,
+            "mux": {
+                "enabled": false,
+                "concurrency": -1,
+                "xudpConcurrency": 0,
+                "xudpProxyUDP443": "reject"
+            }
+        },
+        {
+            "protocol": "freedom",
+            "sendThrough": null,
+            "tag": "direct",
+            "settings": {},
+            "streamSettings": null,
+            "proxySettings": null,
+            "mux": null
+        },
+        {
+            "protocol": "blackhole",
+            "sendThrough": null,
+            "tag": "block",
+            "settings": { "response": { "type": "http" } },
+            "streamSettings": null,
+            "proxySettings": null,
+            "mux": null
+        }
+    ],
+    "transport": null,
+    "policy": null,
+    "api": null,
+    "metrics": null,
+    "stats": null,
+    "reverse": null,
+    "fakeDns": null,
+    "observatory": null
+}

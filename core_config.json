@@ -1,0 +1,59 @@
+{
+    "inbound": [
+        {
+            "tag": "socks",
+            "receiver_settings": {
+                "type": "xray.app.proxyman.ReceiverConfig",
+                "value": "CggKBgi4VBC4VBIGCgR/AAABQg0IARIEaHR0cBIDdGxz"
+            },
+            "proxy_settings": {
+                "type": "xray.proxy.socks.ServerConfig",
+                "value": "IAE="
+            }
+        },
+        {
+            "tag": "http",
+            "receiver_settings": {
+                "type": "xray.app.proxyman.ReceiverConfig",
+                "value": "CggKBgi5VBC5VBIGCgR/AAABQg0IARIEaHR0cBIDdGxz"
+            },
+            "proxy_settings": { "type": "xray.proxy.http.ServerConfig" }
+        }
+    ],
+    "outbound": [
+        {
+            "tag": "proxy",
+            "sender_settings": {
+                "type": "xray.app.proxyman.SenderConfig",
+                "value": "EpADEogDEoADCiJ4cmF5LnRyYW5zcG9ydC5pbnRlcm5ldC50Y3AuQ29uZmlnEtkCEtYCCit4cmF5LnRyYW5zcG9ydC5pbnRlcm5ldC5oZWFkZXJzLmh0dHAuQ29uZmlnEqYCCnsKBQoDMS4xEgUKA0dFVBoBLyIgCg9BY2NlcHQtRW5jb2RpbmcSDWd6aXAsIGRlZmxhdGUiGAoKQ29ubmVjdGlvbhIKa2VlcC1hbGl2ZSIICgRIb3N0EgAiEgoGUHJhZ21hEghuby1jYWNoZSIOCgpVc2VyLUFnZW50EgASpgEaNAoMQ29udGVudC1UeXBlEhhhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0SCnZpZGVvL21wZWcaHAoRVHJhbnNmZXItRW5jb2RpbmcSB2NodW5rZWQaGAoKQ29ubmVjdGlvbhIKa2VlcC1hbGl2ZRoSCgZQcmFnbWESCG5vLWNhY2hlGiIKDUNhY2hlLUNvbnRyb2wSB3ByaXZhdGUSCG5vLWNhY2hlGgN0Y3AqA3RjcCITEP///////////wEiBnJlamVjdA=="
+            },
+            "proxy_settings": {
+                "type": "xray.proxy.vmess.outbound.Config",
+                "value": "CmkKERIPdmlwLm5pbmphdnBzLnRrEM6TAhpQEgZ0QHQudHQaRgoYeHJheS5wcm94eS52bWVzcy5BY2NvdW50EioKJDg3MTNkNTBhLTNkZjYtNDA0MC04MmViLTc3Mjg0MWU3MmJjYxoCCAI="
+            }
+        },
+        {
+            "tag": "direct",
+            "sender_settings": { "type": "xray.app.proxyman.SenderConfig" },
+            "proxy_settings": { "type": "xray.proxy.freedom.Config" }
+        },
+        {
+            "tag": "block",
+            "sender_settings": { "type": "xray.app.proxyman.SenderConfig" },
+            "proxy_settings": {
+                "type": "xray.proxy.blackhole.Config",
+                "value": "CiMKIXhyYXkucHJveHkuYmxhY2tob2xlLkhUVFBSZXNwb25zZQ=="
+            }
+        }
+    ],
+    "app": [
+        { "type": "xray.app.log.Config", "value": "CAEQAiAB" },
+        { "type": "xray.app.dispatcher.Config" },
+        { "type": "xray.app.proxyman.InboundConfig" },
+        { "type": "xray.app.proxyman.OutboundConfig" },
+        {
+            "type": "xray.app.router.Config",
+            "value": "EgpCA2FwaQoDYXBpEg9yBgoEEP//AwoFcHJveHk="
+        }
+    ]
+}

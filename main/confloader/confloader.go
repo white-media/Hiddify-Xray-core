@@ -23,6 +23,14 @@ func LoadConfig(file string) (io.Reader, error) {
 		return os.Stdin, nil
 	}
 	return EffectiveConfigFileLoader(file)
+	
+	//f, err := os.Open(file)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//var r io.Reader
+	//r = f
+	//return r, nil
 }
 
 // LoadExtConfig calls xctl to handle multiple config

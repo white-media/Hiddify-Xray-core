@@ -2,6 +2,7 @@ package core
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"reflect"
 	"sync"
@@ -191,7 +192,10 @@ func initInstanceWithConfig(config *Config, server *Instance) (bool, error) {
 	}
 
 	for _, appSettings := range config.App {
+		fmt.Println("-------------------")
+		fmt.Println(appSettings)
 		settings, err := appSettings.GetInstance()
+		fmt.Println(settings)
 		if err != nil {
 			return true, err
 		}
